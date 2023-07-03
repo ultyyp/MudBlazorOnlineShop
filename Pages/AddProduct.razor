@@ -1,4 +1,9 @@
 ﻿@page "/addproduct"
+@using MudBlazorOnlineShop.Components
+@using MudBlazorOnlineShop.Interfaces;
+@inject ICatalogCart CatalogCart
+@inject IClock Clock
+@inject NavigationManager NavigationManager
 
 
 <MudItem Justify="Justify.Center">

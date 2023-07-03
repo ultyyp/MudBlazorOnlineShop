@@ -8,16 +8,6 @@ namespace MudBlazorOnlineShop.Pages
     public partial class ProductInfo
     {
 
-        [Inject]
-        ICatalogCart CatalogCart { get; set; }
-
-        [Inject]
-        IClock Clock { get; set; }
-
-        [Inject]
-        NavigationManager NavigationManager { get; set; }
-
-
         [Parameter]
         public Guid ProductId { get; set; }
 

@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Components;
 using MudBlazorOnlineShop.Interfaces;
 using MudBlazorOnlineShop.Objects;
@@ -7,13 +6,6 @@ namespace MudBlazorOnlineShop.Pages
 {
     public partial class AddProduct
     {
-        [Inject]
-        ICatalogCart CatalogCart { get; set; }
-
-        [Inject] 
-        NavigationManager NavigationManager { get; set; }
-
-
         private string Name { get; set; }
         private string Description { get; set; }
         private decimal Price { get; set; }
