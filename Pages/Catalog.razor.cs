@@ -6,8 +6,16 @@ namespace MudBlazorOnlineShop.Pages
 {
     public partial class Catalog
     {
+		[Inject]
+		ICatalogCart CatalogCart { get; set; }
 
-        private List<Product>? _products;
+		[Inject]
+		IClock Clock { get; set; }
+
+		[Inject]
+		NavigationManager NavigationManager { get; set; }
+
+		private List<Product>? _products;
         protected override async Task OnInitializedAsync()
         {
             _products = await CatalogCart.GetCatalogProductsAsync(Clock);

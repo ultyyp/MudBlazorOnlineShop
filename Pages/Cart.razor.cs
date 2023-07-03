@@ -6,8 +6,16 @@ namespace MudBlazorOnlineShop.Pages
 {
     public partial class Cart
     {
+		[Inject]
+		ICatalogCart CatalogCart { get; set; }
 
-        private List<Product>? _products;
+		[Inject]
+		IClock Clock { get; set; }
+
+		[Inject]
+		NavigationManager NavigationManager { get; set; }
+
+		private List<Product>? _products;
         protected override async Task OnInitializedAsync()
         {
             _products = await CatalogCart.GetCartProductsAsync(Clock);
@@ -30,7 +38,6 @@ namespace MudBlazorOnlineShop.Pages
                     _products = await CatalogCart.GetCartProductsAsync(Clock);
 				}
             }
-			NavigationManager.NavigateTo($"/cart");
 		}
     }
 }

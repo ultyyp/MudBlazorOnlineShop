@@ -6,7 +6,16 @@ namespace MudBlazorOnlineShop.Pages
 {
     public partial class AddProduct
     {
-        private string Name { get; set; }
+		[Inject]
+		ICatalogCart CatalogCart { get; set; }
+
+		[Inject]
+		IClock Clock { get; set; }
+
+		[Inject]
+		NavigationManager NavigationManager { get; set; }
+
+		private string Name { get; set; }
         private string Description { get; set; }
         private decimal Price { get; set; }
         private DateTime ProducedAt { get; set; }
