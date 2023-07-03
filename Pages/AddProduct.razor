@@ -41,31 +41,4 @@
 </div>
 
 
-@code{
 
-    private string Name { get; set; }
-
-    private string Description { get; set; }
-
-    private decimal Price { get; set; }
-
-    private DateTime ProducedAt { get; set; }
-
-    private DateTime ExpiredAt { get; set; }
-
-    private double Stock { get; set; }
-
-    private Task AddProductToCatalog()
-    {
-        var Product = new Product(Name, Description, Price, ProducedAt, ExpiredAt, Stock);
-        _catalogCart.AddProductToCatalog(Product);
-        NavigationManager.NavigateTo("/catalog");
-        return Task.CompletedTask;
-    }
-
-    private Task BackToCatalog()
-    {
-        NavigationManager.NavigateTo("/catalog");
-        return Task.CompletedTask;
-    }
-}
