@@ -1,0 +1,18 @@
+﻿@page "/productinfo/{OpenedFrom}/{ProductId:guid}"
+@using MudBlazorOnlineShop.Components
+@using MudBlazorOnlineShop.Interfaces;
+@using MudBlazorOnlineShop.Objects;
+@inject ICatalogCart _catalogCart
+@inject IClock _clock
+@inject NavigationManager NavigationManager
+
+<div style="display:flex; justify-content:center;">
+    <ProductItem Product="@_product"> </ProductItem>
+</div>
+<div style="display:flex; justify-content:center;">
+    <button @onclick="ManageProduct" style="display:inline-block; background-color:dodgerblue; padding:5px; border-radius:5px; margin:5px;">@ButtonText</button>
+    <button @onclick="ReturnToLastPage" style="display:inline-block; background-color:red; padding:5px; border-radius:5px; margin:5px;">Back</button>
+</div>
+
+
+
