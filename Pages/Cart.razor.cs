@@ -1,14 +1,25 @@
 using Microsoft.AspNetCore.Components;
+using MudBlazorOnlineShop.Interfaces;
 using MudBlazorOnlineShop.Objects;
 
 namespace MudBlazorOnlineShop.Pages
 {
     public partial class Cart
     {
+
+        [Inject]
+        ICatalogCart CatalogCart { get; set; }
+
+        [Inject]
+        IClock Clock { get; set; }
+
+        [Inject]
+        NavigationManager NavigationManager { get; set; }
+
         private List<Product>? _products;
         protected override async Task OnInitializedAsync()
         {
-            _products = await _catalogCart.GetCartProductsAsync(_clock);
+            _products = await CatalogCart.GetCartProductsAsync(Clock);
         }
 
         private Task OpenProductById(Product product)
@@ -23,9 +34,9 @@ namespace MudBlazorOnlineShop.Pages
             {
                 foreach(var product in _products)
                 {
-                    await _catalogCart.DeleteCartProductById(product.Id);
-                    await _catalogCart.AddProductToCatalog(product);
-                    _products = await _catalogCart.GetCartProductsAsync(_clock);
+                    await CatalogCart.DeleteCartProductById(product.Id);
+                    await CatalogCart.AddProductToCatalog(product);
+                    _products = await CatalogCart.GetCartProductsAsync(Clock);
 				}
             }
 			NavigationManager.NavigateTo($"/cart");

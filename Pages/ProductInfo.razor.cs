@@ -1,10 +1,23 @@
 using Microsoft.AspNetCore.Components;
+using MudBlazorOnlineShop.Interfaces;
 using MudBlazorOnlineShop.Objects;
 
 namespace MudBlazorOnlineShop.Pages
 {
+
     public partial class ProductInfo
     {
+
+        [Inject]
+        ICatalogCart CatalogCart { get; set; }
+
+        [Inject]
+        IClock Clock { get; set; }
+
+        [Inject]
+        NavigationManager NavigationManager { get; set; }
+
+
         [Parameter]
         public Guid ProductId { get; set; }
 
@@ -20,12 +33,12 @@ namespace MudBlazorOnlineShop.Pages
             await base.OnInitializedAsync();
             if(OpenedFrom == "catalog")
             {
-				_product = await _catalogCart.GetCatalogProductByIdAsync(ProductId, _clock);
+				_product = await CatalogCart.GetCatalogProductByIdAsync(ProductId, Clock);
                 ButtonText = "Add To Cart";
 			}
             else if(OpenedFrom == "cart")
             {
-				_product = await _catalogCart.GetCartProductByIdAsync(ProductId, _clock);
+				_product = await CatalogCart.GetCartProductByIdAsync(ProductId, Clock);
 				ButtonText = "Remove From Cart";
 			}
         }
@@ -34,14 +47,14 @@ namespace MudBlazorOnlineShop.Pages
 		{
 			if (OpenedFrom == "catalog")
 			{
-                _catalogCart.AddProductToCart(_product);
-                _catalogCart.DeleteCatalogProductById(_product.Id);
+                CatalogCart.AddProductToCart(_product);
+                CatalogCart.DeleteCatalogProductById(_product.Id);
 				NavigationManager.NavigateTo($"/catalog");
 			}
 			else if (OpenedFrom == "cart")
 			{
-                _catalogCart.DeleteCartProductById(_product.Id);
-				_catalogCart.AddProductToCatalog(_product);
+                CatalogCart.DeleteCartProductById(_product.Id);
+				CatalogCart.AddProductToCatalog(_product);
 				NavigationManager.NavigateTo($"/cart");
 			}
             return Task.CompletedTask;

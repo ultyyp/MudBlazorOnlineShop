@@ -1,10 +1,4 @@
 ﻿@page "/productinfo/{OpenedFrom}/{ProductId:guid}"
-@using MudBlazorOnlineShop.Components
-@using MudBlazorOnlineShop.Interfaces;
-@using MudBlazorOnlineShop.Objects;
-@inject ICatalogCart _catalogCart
-@inject IClock _clock
-@inject NavigationManager NavigationManager
 
 <div style="display:flex; justify-content:center;">
     <ProductItem Product="@_product"> </ProductItem>

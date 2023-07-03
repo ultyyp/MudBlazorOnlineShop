@@ -1,11 +1,4 @@
 ﻿@page "/catalog"
-@using MudBlazorOnlineShop.Components
-@using MudBlazorOnlineShop.Interfaces;
-@using MudBlazorOnlineShop.Objects;
-@inject NavigationManager NavigationManager
-@inject ICatalogCart _catalogCart
-@inject IClock _clock
-
 <div style="background-color:beige; border-radius:5px; padding:50px;">
 	<h1 style="text-align:center;">Shop Catalog</h1>
 	<button @onclick="OpenAddProduct" style="display:inline-block; background-color:dodgerblue; padding:5px; border-radius:5px; margin:5px;">Add Product</button>
