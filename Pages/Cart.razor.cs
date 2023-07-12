@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Components;
-using MudBlazorOnlineShop.Interfaces;
-using MudBlazorOnlineShop.Objects;
+using OnlineShopFrontend.Interfaces;
+using OnlineShopFrontend.Entities;
 
-namespace MudBlazorOnlineShop.Pages
+namespace OnlineShopFrontend.Pages
 {
     public partial class Cart
     {
 		[Inject]
-		ICatalogCart CatalogCart { get; set; }
+		ICatalog Catalog { get; set; }
 
 		[Inject]
 		IClock Clock { get; set; }
@@ -15,29 +15,10 @@ namespace MudBlazorOnlineShop.Pages
 		[Inject]
 		NavigationManager NavigationManager { get; set; }
 
-		private List<Product>? _products;
+		private List<OldProduct>? _products;
         protected override async Task OnInitializedAsync()
         {
-            _products = await CatalogCart.GetCartProductsAsync(Clock);
-        }
-
-        private Task OpenProductById(Product product)
-        {
-            NavigationManager.NavigateTo($"/productinfo/cart/{product.Id.ToString()}");
-            return Task.CompletedTask;
-        }
-
-        private async Task ClearCart()
-        {
-            if( _products != null && _products.Count > 0)
-            {
-                foreach(var product in _products)
-                {
-                    await CatalogCart.DeleteCartProductById(product.Id);
-                    await CatalogCart.AddProductToCatalog(product);
-                    _products = await CatalogCart.GetCartProductsAsync(Clock);
-				}
-            }
-		}
+            await base.OnInitializedAsync();
+        }   
     }
 }

@@ -1,6 +1,6 @@
-﻿using MudBlazorOnlineShop.Interfaces;
+﻿using OnlineShopFrontend.Interfaces;
 
-namespace MudBlazorOnlineShop.Services
+namespace OnlineShopFrontend.Services
 {
     /// <summary>
     /// Represents an in-memory implementation of a time client for retrieving date and time information.

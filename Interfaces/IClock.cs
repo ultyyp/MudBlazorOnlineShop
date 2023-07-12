@@ -1,4 +1,4 @@
-﻿namespace MudBlazorOnlineShop.Interfaces
+﻿namespace OnlineShopFrontend.Interfaces
 {
     /// <summary>
     /// Represents a time client for retrieving date and time information.

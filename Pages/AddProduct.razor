@@ -1,5 +1,5 @@
 ﻿@page "/addproduct"
-@using MudBlazorOnlineShop.Components
+@using OnlineShopFrontend.Components
 
 
 <MudItem Justify="Justify.Center">
@@ -8,24 +8,8 @@
         <input @bind="Name" type="text" placeholder="Name" style="border-color:black; border-width:2px; border-style:groove; align-self:center; text-align:center; padding:5px;  border-radius:5px; margin:5px; width:fit-content;">
         <hr />
 
-        <label>Product Description:</label>
-        <input @bind="Description" type="text" placeholder="Description"  style="border-color:black; border-width:2px; border-style:groove; align-self:center; text-align:center; padding:5px;  border-radius:5px; margin:5px; width:fit-content;">
-        <hr />
-
         <label>Product Price:</label>
         <input @bind="Price" type="number" style="border-color:black; border-width:2px; border-style:groove; align-self:center; text-align:center; padding:5px;  border-radius:5px; margin:5px; width:fit-content;">
-        <hr />
-
-        <label>Product Production Date:</label>
-        <input @bind="ProducedAt" type="date" style="border-color:black; border-width:2px; border-style:groove; align-self:center; text-align:center; padding:5px;  border-radius:5px; margin:5px; width:fit-content;">
-        <hr />
-
-        <label>Product Expiry Date:</label>
-        <input @bind="ExpiredAt" type="date" style="border-color:black; border-width:2px; border-style:groove; align-self:center; text-align:center; padding:5px;  border-radius:5px; margin:5px; width:fit-content;">
-        <hr />
-
-        <label>Product Stock:</label>
-        <input @bind="Stock" type="number" style="border-color:black; border-width:2px; border-style:groove; align-self:center; text-align:center; padding:5px;  border-radius:5px; margin:5px; width:fit-content;">
         <hr />
 
     </MudPaper>
